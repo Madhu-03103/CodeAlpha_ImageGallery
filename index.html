@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Custom Image Gallery</title>
+  <style>
+    body {
+      font-family: Book antiqua, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .lightbox-content {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: auto;
+      width: 80%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .slide {
+      display: none;
+      width: 900px;
+      height: 900px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 35px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 40px;
+      padding: 10px;
+      user-select: none;
+    }
+
+    .prev {
+      left: 40px;
+    }
+
+    .next {
+      right: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery img {
+        width: 90%;
+        height: 160px;
+      }
+      .slide {
+        width: 90%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>MADHU'S  RANDOM  STUFFS </h1>
+
+  <div class="gallery">
+    <img src="images\c_1.jpg" alt="Moon Light" onclick="openLightbox();currentSlide(1)">
+    <img src="images\c_2.jpg"alt="Rabbit Doll" onclick="openLightbox();currentSlide(2)">
+    <img src="images\c_3.jpg" alt="Digi Cam" onclick="openLightbox();currentSlide(3)">
+    <img src="images\c_8.jpg" alt="Plates" onclick="openLightbox();currentSlide(4)">
+    <img src="images\c_4.jpg" alt="Shades Of Brown" onclick="openLightbox();currentSlide(5)">
+    <img src="images\c_5.jpg" alt="Iced Latte" onclick="openLightbox();currentSlide(6)">
+    <img src="images\c_6.jpg" alt="Beach View" onclick="openLightbox();currentSlide(7)">
+    <img src="images\c_7.jpg" alt="Cold Coffee" onclick="openLightbox();currentSlide(8)">
+    <img src="images\c_9.jpg" alt="Clock" onclick="openLightbox();currentSlide(9)">
+    <img src="images\c_10.jpg" alt="Candles" onclick="openLightbox();currentSlide(10)">
+    <img src="images\c_11.jpg" alt="Library" onclick="openLightbox();currentSlide(11)">
+    <img src="images\c_12.jpg" alt="Claw Clips" onclick="openLightbox();currentSlide(12)">
+    <img src="images\c_13.jpg" alt="Mirror" onclick="openLightbox();currentSlide(13)">
+    <img src="images\c_14.jpg" alt="Windows" onclick="openLightbox();currentSlide(14)">
+    <img src="images\c_15.jpg" alt="Books" onclick="openLightbox();currentSlide(15)">
+    <img src="images\c_16.jpg" alt="Skincare Stuffs" onclick="openLightbox();currentSlide(16)">
+    <img src="images\c_17.jpg"alt="Fan" onclick="openLightbox();currentSlide(17)">
+    <img src="images\c_18.jpg" alt="Flower Vase" onclick="openLightbox();currentSlide(18)">
+    <img src="images\c_19.jpg"alt="Road" onclick="openLightbox();currentSlide(19)">
+    <img src="images\c_20.jpg"alt="Radio" onclick="openLightbox();currentSlide(20)">
+
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content">
+      <img class="slide" src="images\c_1.jpg" alt="Moon Light">
+      <img class="slide" src="images\c_2.jpg" alt="Rabbit Doll">
+      <img class="slide" src="images\c_3.jpg"alt="Digi Cam">
+      <img class="slide" src="images\c_8.jpg" alt="Plates">
+      <img class="slide" src="images\c_4.jpg" alt="Shades Of Brown">
+      <img class="slide" src="images\c_5.jpg" alt="Iced Latte">
+      <img class="slide" src="images\c_6.jpg" alt="Beach View">
+      <img class="slide" src="images\c_7.jpg" alt="Cold Coffee">
+      <img class="slide" src="images\c_9.jpg" alt="Clock">
+      <img class="slide" src="images\c_10.jpg" alt="Candles">
+      <img class="slide" src="images\c_11.jpg" alt="Library">
+      <img class="slide" src="images\c_12.jpg" alt="Claw Clips">
+      <img class="slide" src="images\c_13.jpg" alt="Mirror">
+      <img class="slide" src="images\c_14.jpg" alt="Windows">
+      <img class="slide" src="images\c_15.jpg" alt="Books">
+      <img class="slide" src="images\c_16.jpg"  alt="Skincare Stuffs">
+      <img class="slide" src="images\c_17.jpg" alt="Fan">
+      <img class="slide" src="images\c_18.jpg" alt="Flower Vase">
+      <img class="slide" src="images\c_19.jpg"alt="Road">
+      <img class="slide" src="images\c_20.jpg" alt="Radio">
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+
+    function openLightbox() {
+      document.getElementById('lightbox').style.display = 'block';
+      showSlide(slideIndex);
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    function changeSlide(n) {
+      showSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+      let slides = document.getElementsByClassName('slide');
+      if (n > slides.length) slideIndex = 1;
+      if (n < 1) slideIndex = slides.length;
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+      }
+      slides[slideIndex - 1].style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
